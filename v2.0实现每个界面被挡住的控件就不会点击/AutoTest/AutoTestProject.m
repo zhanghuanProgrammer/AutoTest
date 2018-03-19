@@ -39,11 +39,17 @@
 - (void)randomClick:(NSMutableArray *)events{
     
     ViewHolder *holder = [events randomObject];
+//    for (NSInteger i=0; i<events.count; i++) {
+//        holder = events[i];
+//        UIView *view = holder.view;
+//        if ([view isKindOfClass:[UITabBar class]]) {
+//            [view happenEvent];
+//        }
+//    }
     UIView *view = holder.view;
-//    [view happenEvent];
-    if ([view isKindOfClass:[UISegmentedControl class]]) {
-        [view happenEvent];
-    }
+    
+    [view happenEvent];
+    
     
     //添加一个模拟点击的一个图片,这样看起来更加友好
     [SimulationView addTouchSimulationView:view.centerInWindow afterDismiss:AutoTest_Interval+0.5];

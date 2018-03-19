@@ -1,5 +1,6 @@
 
 #import "UIView+Frame.h"
+#import "AutoTestHeader.h"
 
 @implementation UIView (Frame)
 
@@ -170,7 +171,7 @@
     CGRect intersectionRect = [self rectIntersectionInSuperView];
     if (CGRectIsEmpty(intersectionRect) || CGRectIsNull(intersectionRect)) {
         if ([superView respondsToSelector:@selector(hitTest:withEvent:)]) {
-            UIView *responeView = [superView hitTest:CGPointMake(self.width/2.0+self.x, self.height/2.0+self.y) withEvent:nil];
+            UIView *responeView = [superView hitTest:CGPointMake(self.width/2.0+self.left, self.height/2.0+self.top) withEvent:nil];
             if (!responeView) {
                 return NO;
             }else if(responeView != self){

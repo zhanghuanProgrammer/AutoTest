@@ -16,6 +16,7 @@
 #import "UIView+Event.h"
 #import "UIView+Frame.h"
 #import "ViewHolder.h"
+#import "NSArray+ZH.h"
 
 #define ShouldLogAllView 0 //是否需要打印window上所有控件到控制台
 

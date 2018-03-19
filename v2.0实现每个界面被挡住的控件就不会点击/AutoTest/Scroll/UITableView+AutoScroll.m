@@ -8,6 +8,7 @@
 
 #import "UITableView+AutoScroll.h"
 #import "UIScrollView+AutoScroll.h"
+#import "AutoTestHeader.h"
 
 @implementation UITableView (AutoScroll)
 

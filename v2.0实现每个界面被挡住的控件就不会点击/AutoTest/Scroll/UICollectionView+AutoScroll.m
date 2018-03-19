@@ -8,6 +8,7 @@
 
 #import "UICollectionView+AutoScroll.h"
 #import "UIScrollView+AutoScroll.h"
+#import "AutoTestHeader.h"
 
 @implementation UICollectionView (AutoScroll)
 
