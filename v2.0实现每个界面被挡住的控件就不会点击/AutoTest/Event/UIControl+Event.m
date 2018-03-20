@@ -14,34 +14,17 @@
 - (void)happenEvent{
     [super happenEvent];
     
-    UIControlEvents allControlEvents=[self allControlEvents];
-    NSSet *allTargets=[self allTargets];
-    for (id target in allTargets) {
-        NSArray *allActions=[self actionsForTarget:target forControlEvent:allControlEvents];
-        for (NSString *actionStr in allActions) {
-            if (self.userInteractionEnabled&&self.alpha>0.1&&(![self isHidden])) {
-                
-                if ([target respondsToSelector:NSSelectorFromString(actionStr)]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-                    [target performSelector:NSSelectorFromString(actionStr) withObject:self];
-#pragma clang diagnostic pop
-                }
-            }
-        }
+    if (self.userInteractionEnabled&&self.alpha>0.1&&(![self isHidden])) {
+        [self sendActionsForControlEvents:UIControlEventAllEvents];
     }
 }
 
 - (BOOL)isEventView{
-    UIControlEvents allControlEvents=[self allControlEvents];
     NSSet *allTargets=[self allTargets];
-    for (id target in allTargets) {
-        NSArray *allActions=[self actionsForTarget:target forControlEvent:allControlEvents];
-        if (allActions.count>0) {
-            if (self.enabled && self.userInteractionEnabled&&self.alpha>0.1&&(![self isHidden])) {
-                [self cornerRadiusBySelfWithColor:AutoTest_UIControl_Action_Color];
-                return YES;
-            }
+    if (allTargets.count>0) {
+        if (self.enabled && self.userInteractionEnabled&&self.alpha>0.1&&(![self isHidden])) {
+            [self cornerRadiusBySelfWithColor:AutoTest_UIControl_Action_Color];
+            return YES;
         }
     }
     return [super isEventView];

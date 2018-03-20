@@ -1,5 +1,5 @@
 //
-//  UITabBar+Event.h
+//  UINavigationBar+Event.h
 //  MaiXiang
 //
 //  Created by mac on 2018/3/19.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface UITabBar (Event)
+@interface UINavigationBar (Event)
 
 @end

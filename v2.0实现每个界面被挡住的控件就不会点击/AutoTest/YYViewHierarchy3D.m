@@ -474,7 +474,7 @@
                     [holders addObject:holder];
                 }
             }else{
-                BOOL isKaiYuanChina = NO;//如果是开源中国
+                BOOL isKaiYuanChina = YES;//如果是开源中国
                 if (isKaiYuanChina) {
                     if ([aView isHitTest]) {
                         [holders addObject:holder];

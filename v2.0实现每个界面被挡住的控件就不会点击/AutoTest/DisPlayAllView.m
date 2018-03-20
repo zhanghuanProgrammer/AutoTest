@@ -81,7 +81,7 @@
                 [self addEventView:holder atIndent:layerIndex];
             }
         }else{
-            BOOL isKaiYuanChina = NO;//如果是开源中国
+            BOOL isKaiYuanChina = YES;//如果是开源中国
             if (isKaiYuanChina) {
                 if ([aView isHitTest]) {
                     [self addEventView:holder atIndent:layerIndex];
