@@ -11,6 +11,7 @@
 #import "AutoTestHeader.h"
 #import "UIView+AutoTestExt.h"
 #import "UIGestureRecognizer+YYKitAdd.h"
+#import "RegionsTool.h"
 
 
 @interface DisPlayAllView ()
@@ -24,7 +25,12 @@
     //如果需要收集事件
     if(self.holders) {
         if ([holder.view isEventView]) {
-            [self.holders addObject:holder];
+            holder.type = ViewHolderTypeEvent;
+            [self.holders addObject:[holder copyNew]];
+        }
+        if ([holder.view isCanScroll]) {
+            holder.type = ViewHolderTypeScroll;
+            [self.holders addObject:[holder copyNew]];
         }
     }
     //如果需要打印,拼接Log打印
@@ -50,6 +56,19 @@
                       toArray:self.holders];
         }
     }
+    NSLog(@"筛选 前 事件个数:%@",@(_holders.count));
+    NSMutableArray *events = [NSMutableArray array];
+    for (ViewHolder *holder in _holders) {
+        if(holder.type == ViewHolderTypeEvent)[events addObject:holder];
+    }
+    [_holders removeObjectsInArray:[RegionsTool removesEvent:events]];
+    [events removeAllObjects];
+    for (ViewHolder *holder in _holders) {
+        if(holder.type == ViewHolderTypeScroll)[events addObject:holder];
+    }
+    [_holders removeObjectsInArray:[RegionsTool removesEvent:events]];
+    
+    NSLog(@"筛选 后 事件个数:%@",@(_holders.count));
     if (ShouldLogAllView) {
         NSLog(@"Log Window Director:\n%@",self.outstring);
     }

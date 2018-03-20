@@ -26,7 +26,7 @@
     self.isRuning=YES;
     
     NSMutableArray *events=[[DisPlayAllView new] allEventView];
-    NSLog(@"事件个数:%@",@(events.count));
+//    NSLog(@"事件个数:%@",@(events.count));
     [self atLeastRunOne:events];
 }
 

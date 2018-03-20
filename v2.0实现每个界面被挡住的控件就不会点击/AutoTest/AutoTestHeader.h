@@ -17,8 +17,9 @@
 #import "UIView+Frame.h"
 #import "ViewHolder.h"
 #import "NSArray+ZH.h"
+#import "UIView+AutoScroll.h"
 
-#define ShouldLogAllView 1 //是否需要打印window上所有控件到控制台
+#define ShouldLogAllView 0 //是否需要打印window上所有控件到控制台
 
 #define AutoTest YES //是否自动运行
 

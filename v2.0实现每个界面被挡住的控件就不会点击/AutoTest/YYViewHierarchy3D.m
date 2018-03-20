@@ -246,7 +246,8 @@
         self.backgroundColor = [UIColor clearColor];
         self.frame = [UIScreen mainScreen].bounds;
         self.windowLevel = UIWindowLevelStatusBar + 99.0f;
-        dist = -0.5;
+//        dist = -0.5;
+        dist = 0;
         UIPanGestureRecognizer *gPan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(pan:)];
         UIPinchGestureRecognizer *gPinch = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(pinch:)];
         [self addGestureRecognizer:gPan];
@@ -364,9 +365,7 @@
                       toArray:_holders];
         }
     }
-    //    [_holders removeObjectsInArray:[RegionsTool removesEvent:_holders]];
-    
-    
+//    [_holders removeObjectsInArray:[RegionsTool removesEvent:_holders]];
     
     for (ViewImageHolder *h in _holders) {
         UIImageView *imgV = [[UIImageView alloc] initWithImage:h.image];
@@ -382,7 +381,7 @@
         CGRect scr = [UIScreen mainScreen].bounds;
         imgV.layer.anchorPoint = CGPointMake((scr.size.width / 2 - imgV.frame.origin.x) / imgV.frame.size.width,
                                              (scr.size.height / 2 - imgV.frame.origin.y) / imgV.frame.size.height);
-        imgV.layer.anchorPointZ = (-h.deep + 3) * 50;
+//        imgV.layer.anchorPointZ = (-h.deep + 3) * 50;
         
         imgV.frame = r;
         imgV.layer.opacity = 0.9;
@@ -390,7 +389,6 @@
     }
     [self anime:0.3];
 }
-
 
 
 - (void)startHide {
@@ -475,13 +473,6 @@
                 }
                 if ([aView isHitTest]) {
                     [holders addObject:holder];
-                }
-            }else{
-                BOOL isKaiYuanChina = YES;//如果是开源中国
-                if (isKaiYuanChina) {
-                    if ([aView isHitTest]) {
-                        [holders addObject:holder];
-                    }
                 }
             }
         }
