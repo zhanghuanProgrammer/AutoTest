@@ -11,5 +11,6 @@
 @interface UIView (AutoScroll)
 
 - (BOOL)isCanScroll;
+- (NSInteger)autoScroll;
 
 @end

@@ -14,4 +14,8 @@
     return NO;
 }
 
+- (NSInteger)autoScroll{
+    return 0;
+}
+
 @end

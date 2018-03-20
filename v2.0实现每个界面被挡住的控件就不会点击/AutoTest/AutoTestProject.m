@@ -40,6 +40,18 @@
     
     ViewHolder *holder = [events randomObject];
     UIView *view = holder.view;
+    
+    if (holder.type == ViewHolderTypeScroll){
+//        NSLog(@"%@",@"呵呵哒");
+        [view autoScroll];
+    }else{
+        [view happenEvent];
+//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//            [self autoTest];
+//        });
+//        return;
+    }
+
 //    [view happenEvent];
 //    if ([view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]){
 //        NSLog(@"%@",@"呵呵哒");
@@ -50,7 +62,7 @@
 //        });
 //        return;
 //    }
-//    
+//
     //添加一个模拟点击的一个图片,这样看起来更加友好
     [SimulationView addTouchSimulationView:view.centerInWindow afterDismiss:AutoTest_Interval+0.5];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(AutoTest_Interval * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
