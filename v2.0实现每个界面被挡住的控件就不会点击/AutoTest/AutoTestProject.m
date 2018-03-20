@@ -40,7 +40,7 @@
     
     ViewHolder *holder = [events randomObject];
     UIView *view = holder.view;
-    [view happenEvent];
+//    [view happenEvent];
 //    if ([view isKindOfClass:NSClassFromString(@"_UINavigationBarBackIndicatorView")]){
 //        NSLog(@"%@",@"呵呵哒");
 //        [view happenEvent];

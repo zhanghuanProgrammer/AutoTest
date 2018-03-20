@@ -150,6 +150,9 @@
     if (CGRectEqualToRect(superViewCanShowFrame, [UIScreen mainScreen].bounds)) {
         if (!self.clipsToBounds) return [UIScreen mainScreen].bounds;
     }
+    if (!CGAffineTransformEqualToTransform(self.transform, CGAffineTransformIdentity)) {
+        return superViewCanShowFrame;
+    }
     return CGRectIntersection([self frameInWindow], superViewCanShowFrame);
 }
 /**在桌面上的显示区域*/
