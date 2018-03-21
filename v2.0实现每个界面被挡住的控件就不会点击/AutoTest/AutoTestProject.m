@@ -45,11 +45,11 @@
 //        NSLog(@"%@",@"呵呵哒");
         [view autoScroll];
     }else{
-        [view happenEvent];
-//        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//            [self autoTest];
-//        });
-//        return;
+//        [view happenEvent];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self autoTest];
+        });
+        return;
     }
 
 //    [view happenEvent];

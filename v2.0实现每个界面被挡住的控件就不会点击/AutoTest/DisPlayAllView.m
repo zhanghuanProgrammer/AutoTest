@@ -66,7 +66,7 @@
     for (ViewHolder *holder in _holders) {
         if(holder.type == ViewHolderTypeScroll)[events addObject:holder];
     }
-    [_holders removeObjectsInArray:[RegionsTool removesEvent:events]];
+//    [_holders removeObjectsInArray:[RegionsTool removesEvent:events]];
     
     NSLog(@"筛选 后 事件个数:%@",@(_holders.count));
     if (ShouldLogAllView) {
