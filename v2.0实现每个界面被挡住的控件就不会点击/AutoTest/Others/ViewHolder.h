@@ -2,8 +2,10 @@
 #import <Foundation/Foundation.h>
 
 typedef NS_ENUM(NSUInteger, ViewHolderType) {
-    ViewHolderTypeEvent,
-    ViewHolderTypeScroll,
+    ViewHolderTypeEvent = 1 << 0,
+    ViewHolderTypeScroll = 1 << 1,
+    ViewHolderTypeScrollVer = 1 << 2,
+    ViewHolderTypeScrollHor = 1 << 3,
 };
 
 @interface ViewHolder : NSObject

@@ -13,15 +13,29 @@
 @implementation UIScrollView (AutoScroll)
 
 - (BOOL)isCanScroll{
-    //先判断ScrollView的滑动方向
-    BOOL canVerScroll=self.contentSize.height>self.size.height;//是否可以纵向滑动
-    BOOL canHorScroll=self.contentSize.width>self.size.width;//是否可以横向滑动
-    
-    //随机选择左右滑或者上下滑
-    if(canVerScroll||canHorScroll){
+    if([self canVerScroll]||[self canHorScroll]){
         return YES;
     }
     return NO;
+}
+
+- (BOOL)canVerScroll{
+    if ([super isRotationLeftOrRight]) {
+        BOOL canHorScroll=self.contentSize.width>self.size.width;//是否可以横向滑动
+        return canHorScroll;
+        
+    }
+    BOOL canVerScroll=self.contentSize.height>self.size.height;//是否可以纵向滑动
+    return canVerScroll;
+}
+
+- (BOOL)canHorScroll{
+    if ([super isRotationLeftOrRight]) {
+        BOOL canVerScroll=self.contentSize.height>self.size.height;//是否可以纵向滑动
+        return canVerScroll;
+    }
+    BOOL canHorScroll=self.contentSize.width>self.size.width;//是否可以横向滑动
+    return canHorScroll;
 }
 
 - (NSInteger)autoScroll{
@@ -131,7 +145,7 @@
     if (verScrollOffsetY>0) direction=4;
     else if (verScrollOffsetY<0) direction=2;
     
-    return direction;
+    return [super isTransformDirection:direction];
 }
 
 @end

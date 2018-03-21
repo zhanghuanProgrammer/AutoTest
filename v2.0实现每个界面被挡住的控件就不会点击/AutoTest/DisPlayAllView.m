@@ -25,12 +25,23 @@
     //如果需要收集事件
     if(self.holders) {
         if ([holder.view isEventView]) {
-            holder.type = ViewHolderTypeEvent;
-            [self.holders addObject:[holder copyNew]];
+            ViewHolder *newHolder = [holder copyNew];
+            newHolder.type = ViewHolderTypeEvent;
+            [self.holders addObject:newHolder];
         }
         if ([holder.view isCanScroll]) {
-            holder.type = ViewHolderTypeScroll;
-            [self.holders addObject:[holder copyNew]];
+            if ([holder.view canVerScroll]){
+                ViewHolder *newHolder = [holder copyNew];
+                newHolder.type |= ViewHolderTypeScroll;
+                newHolder.type |= ViewHolderTypeScrollVer;
+                [self.holders addObject:newHolder];
+            }
+            if ([holder.view canHorScroll]){
+                ViewHolder *newHolder = [holder copyNew];
+                newHolder.type |= ViewHolderTypeScroll;
+                newHolder.type |= ViewHolderTypeScrollHor;
+                [self.holders addObject:newHolder];
+            }
         }
     }
     //如果需要打印,拼接Log打印
@@ -56,19 +67,31 @@
                       toArray:self.holders];
         }
     }
-    NSLog(@"筛选 前 事件个数:%@",@(_holders.count));
+//    NSLog(@"筛选 前 事件个数:%@",@(_holders.count));
+    
     NSMutableArray *events = [NSMutableArray array];
     for (ViewHolder *holder in _holders) {
         if(holder.type == ViewHolderTypeEvent)[events addObject:holder];
     }
-    [_holders removeObjectsInArray:[RegionsTool removesEvent:events]];
+    [_holders removeObjectsInArray:[RegionsTool removesEvent:events]];//被挡住的控件就不会点击
+    
     [events removeAllObjects];
     for (ViewHolder *holder in _holders) {
-        if(holder.type == ViewHolderTypeScroll)[events addObject:holder];
+        if(holder.type & ViewHolderTypeScrollHor){
+            [events addObject:holder];
+        }
     }
-//    [_holders removeObjectsInArray:[RegionsTool removesEvent:events]];
+    [_holders removeObjectsInArray:[RegionsTool removesEvent:events]];//水平滚动的控件,被挡住的控件需要被筛选出去
     
-    NSLog(@"筛选 后 事件个数:%@",@(_holders.count));
+    [events removeAllObjects];
+    for (ViewHolder *holder in _holders) {
+        if(holder.type & ViewHolderTypeScrollVer){
+            [events addObject:holder];
+        }
+    }
+    [_holders removeObjectsInArray:[RegionsTool removesEvent:events]];//垂直滚动的控件,被挡住的控件需要被筛选出去
+    
+//    NSLog(@"筛选 后 事件个数:%@",@(_holders.count));
     if (ShouldLogAllView) {
         NSLog(@"Log Window Director:\n%@",self.outstring);
     }

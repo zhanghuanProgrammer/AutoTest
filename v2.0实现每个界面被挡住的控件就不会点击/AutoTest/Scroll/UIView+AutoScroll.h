@@ -11,6 +11,10 @@
 @interface UIView (AutoScroll)
 
 - (BOOL)isCanScroll;
+- (BOOL)canVerScroll;
+- (BOOL)canHorScroll;
 - (NSInteger)autoScroll;
+- (NSInteger)isTransformDirection:(NSInteger)direction;
+- (BOOL)isRotationLeftOrRight;
 
 @end
