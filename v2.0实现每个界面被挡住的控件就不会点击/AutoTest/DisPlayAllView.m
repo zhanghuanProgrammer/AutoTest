@@ -49,7 +49,7 @@
         for (int i = 0; i < indent; i++)
             [self.outstring appendString:@"--"];
         
-        [self.outstring appendFormat:@"[%2zd] %@ %@ %@ %@ %@\n", indent, [[holder.view class] description],[holder.view textDescription],NSStringFromCGRect(holder.rect),NSStringFromCGRect([holder.view canShowFrameRecursive]),NSStringFromClass([holder.view getViewController].class)];
+        [self.outstring appendFormat:@"[%2ld] %@ %@ %@ %@ %@\n", (long)indent, [[holder.view class] description],[holder.view textDescription],NSStringFromCGRect(holder.rect),NSStringFromCGRect([holder.view canShowFrameRecursive]),NSStringFromClass([holder.view getViewController].class)];
     }
 }
 

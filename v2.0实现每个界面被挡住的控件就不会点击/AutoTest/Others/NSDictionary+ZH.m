@@ -69,7 +69,7 @@
     if (_root) {
         
         if(_needRecoderOrder&&[node isKindOfClass:[NSDictionary class]])
-            node[@"ZH_Recoder_Order"]=[NSString stringWithFormat:@"%zd",recoderOrderIndex++];
+            node[@"ZH_Recoder_Order"]=[NSString stringWithFormat:@"%ld",(long)recoderOrderIndex++];
         
         NSMutableDictionary *top = _stack.lastObject;
         id existing = top[elementName];

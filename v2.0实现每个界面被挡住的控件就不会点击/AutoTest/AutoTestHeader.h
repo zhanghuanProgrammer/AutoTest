@@ -23,7 +23,7 @@
 
 #define AutoTest YES //是否自动运行
 
-#define AutoTest_Interval 1 //每一次重复间隔
+#define AutoTest_Interval 1.5 //每一次重复间隔
 
 #define DebugTap YES //是否执行点击事件
 #define DebugScroll YES //是否执行滚动事件

@@ -11,14 +11,14 @@ static const int block_key;
 
 + (void)load{
     [super load];
-    if (AutoTest) {
+//    if (AutoTest) {
         static dispatch_once_t onceToken;
         dispatch_once(&onceToken, ^{
             [self swizzleInstanceMethod:@selector(initWithTarget:action:) with:@selector(custom_initWithTarget:action:)];
             [self swizzleInstanceMethod:@selector(addTarget:action:) with:@selector(custom_addTarget:action:)];
             [self swizzleInstanceMethod:@selector(removeTarget:action:) with:@selector(custom_removeTarget:action:)];
         });
-    }
+//    }
 }
 
 - (instancetype)custom_initWithTarget:(nullable id)target action:(nullable SEL)action{
